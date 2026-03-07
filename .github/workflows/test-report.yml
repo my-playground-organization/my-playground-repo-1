@@ -20,7 +20,5 @@ jobs:
         with:
           artifact: test-results
           name: "JUnit Tests"
-          path: |
-            target/surefire-reports/TEST-*.xml
-            target/failsafe-reports/TEST-*.xml
+          path: "target/surefire-reports/TEST-*.xml,target/failsafe-reports/TEST-*.xml"
           reporter: java-junit
