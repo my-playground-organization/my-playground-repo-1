@@ -12,7 +12,7 @@ public class DemoApplication {
 
 	public void run(){
 		// TODO Hallo Welt!
-	    System.out.println("test");
+		System.out.println("test");
 	}
 
 }
