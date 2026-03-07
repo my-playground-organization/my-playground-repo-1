@@ -10,4 +10,10 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
+	public void run(){
+		// TODO Hallo Welt!
+	    System.out.println("test");
+		int i=4+3;
+	}
+
 }
