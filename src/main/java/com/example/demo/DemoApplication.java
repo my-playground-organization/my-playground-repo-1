@@ -13,7 +13,6 @@ public class DemoApplication {
 	public void run(){
 		// TODO Hallo Welt!
 	    System.out.println("test");
-		int i=4+3;
 	}
 
 }
