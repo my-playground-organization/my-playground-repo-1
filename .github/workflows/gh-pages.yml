@@ -31,6 +31,8 @@ jobs:
           cache: maven
       - name: Generate javadoc
         run: mvn -B clean javadoc:javadoc --no-transfer-progress
+      - name: Fix docs/_site permissions
+        run: sudo chown -R $USER:$USER docs/_site
       - name: Integrate javadoc to site
         run: |
           cp -r target/reports/apidocs ./docs/_site/apidocs
