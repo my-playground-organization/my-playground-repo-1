@@ -31,12 +31,15 @@ jobs:
           SPRING_RABBITMQ_HOST: rabbitmq
           MYDATA_PDP_URIS: amqp://rabbitmq:5672
         run: mvn -B -U clean verify org.jacoco:jacoco-maven-plugin:report-aggregate --no-transfer-progress
-      - name: Upload test results
-        uses: actions/upload-artifact@v7
+      - name: Upload test results to Codecov
+        uses: codecov/codecov-action@v5
         if: ${{ success() || failure() }}
         with:
-          name: test-results
-          path: target/surefire-reports/TEST-*.xml
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: target/surefire-reports/TEST-*.xml
+          flags: unittests
+          fail_ci_if_error: true
+          report_type: test_results
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
