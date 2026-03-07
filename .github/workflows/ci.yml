@@ -7,8 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     services:
       rabbitmq:
@@ -49,5 +47,3 @@ jobs:
           flags: unittests
           fail_ci_if_error: true
           report_type: coverage
-      - name: Submit Dependency Snapshot
-        uses: advanced-security/maven-dependency-submission-action@v5
