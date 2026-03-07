@@ -36,9 +36,7 @@ jobs:
         if: ${{ success() || failure() }}
         with:
           name: test-results
-          path: |
-            target/surefire-reports/TEST-*.xml
-            target/failsafe-reports/TEST-*.xml
+          path: target/surefire-reports/TEST-*.xml
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v5
         with:
