@@ -1,0 +1,15 @@
+theme: jekyll-theme-cayman
+
+title: Test
+description: Hello World
+use_breadcrumbs: false
+
+plugins:
+  - jemoji
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+navigation:
+  - name: "Home"
+    link: ""
+    icon: "/assets/images/home.svg"

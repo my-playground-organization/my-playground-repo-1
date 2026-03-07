@@ -1,0 +1,146 @@
+---
+---
+
+$header-bg-color: #0bb2ab;
+$header-bg-color-secondary: #00587c;
+
+$section-headings-color: #1f82c0;
+
+@import "{{ site.theme }}";
+
+.layout{
+    display: flex;
+    gap: 2rem;
+}
+
+.sidebar{
+    flex: 0 0 240px;
+}
+
+.content{
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.side-nav a{
+    text-decoration: none;
+    display: block;
+    padding: .3rem 0;
+}
+.side-nav a.active{ font-weight: 700; }
+
+.project-logo {
+    height: 120px;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* --- Desktop --- */
+@media (min-width: 769px) {
+    .layout {
+        align-items: flex-start;   /* <- verhindert Stretch */
+    }
+
+    .sidebar {
+        align-self: flex-start;
+        height: fit-content;       /* <- Sidebar nur so hoch wie Inhalt */
+        position: sticky;
+        top: 1.5rem;
+    }
+}
+
+
+
+/* --- Mobile --- */
+.side-nav-toggle summary{
+    display: none;          /* summary nur auf mobile zeigen */
+    cursor: pointer;
+    font-weight: 600;
+    padding: .5rem .75rem;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: .4rem;
+    background: rgba(0,0,0,0.03);
+}
+
+@media (max-width: 768px){
+    .layout{
+        flex-direction: column;   /* Sidebar oben, Content drunter */
+        gap: 1rem;
+    }
+
+    .sidebar{
+        flex: none;
+        width: 100%;
+    }
+
+    .side-nav-toggle summary{
+        display: block;
+    }
+
+    /* Platz / Optik fürs Menü auf Mobile */
+    .side-nav{
+        margin-top: .5rem;
+        padding-left: .25rem;
+    }
+
+    .side-nav a{
+        padding: .45rem .1rem;
+    }
+
+    .project-logo {
+        height: 64px;
+    }
+}
+
+
+
+#content {
+    max-width: 96rem;
+}
+
+.breadcrumbs ul {
+    list-style: none;
+    padding: 0;
+}
+
+.breadcrumbs li {
+    display: inline;
+}
+
+.breadcrumbs li+li:before {
+    padding: 0.5rem;
+    color: #606c71;
+    content: "/\00a0";
+}
+
+.main-content h1 {
+    font-weight: bold !important;
+}
+
+.main-content h2 {
+    font-weight: bold !important;
+}
+
+.main-content h3 {
+    margin-bottom: 0rem !important;
+}
+
+.main-content h4 {
+    margin-top: 1rem !important;
+    margin-bottom: 0rem !important;
+    font-style: italic !important;
+}
+
+.collapsed {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.expanded {
+    height: auto;
+    transition: height 0.3s ease;
+}
+
