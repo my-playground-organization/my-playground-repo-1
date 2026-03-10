@@ -41,13 +41,13 @@ jobs:
           MYDATA_PDP_URIS: amqp://rabbitmq:5672
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_ARGS: ${{ (github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork != true) && 'org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.organization=my-playground-organization -Dsonar.projectKey=my-playground-organization_my-playground-repo-1' || ''}}
-        run: mvn -B -U clean verify org.jacoco:jacoco-maven-plugin:report-aggregate $SONAR_ARGS --no-transfer-progress
+        run: mvn -B -U clean verify $SONAR_ARGS --no-transfer-progress
       - name: Upload test results to Codecov
         uses: codecov/codecov-action@v5
         if: ${{ success() || failure() }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: target/surefire-reports/TEST-*.xml
+          files: "**/target/surefire-reports/TEST-*.xml"
           flags: unittests
           fail_ci_if_error: true
           report_type: test_results
@@ -55,7 +55,7 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: target/site/jacoco-aggregate/jacoco.xml
+          files: "**/target/site/jacoco/jacoco.xml"
           flags: unittests
           fail_ci_if_error: true
           report_type: coverage
