@@ -43,7 +43,7 @@ jobs:
           SONAR_ARGS: ${{ (github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork != true) && 'org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.organization=my-playground-organization -Dsonar.projectKey=my-playground-organization_my-playground-repo-1' || ''}}
         run: mvn -B -U clean verify $SONAR_ARGS --no-transfer-progress
       - name: Upload test results to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         if: ${{ success() || failure() }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -51,7 +51,7 @@ jobs:
           fail_ci_if_error: true
           report_type: test_results
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           flags: unittests
